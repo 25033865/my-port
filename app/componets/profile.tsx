@@ -4,7 +4,7 @@ import Stats from "./Stats";
 
 const Profile: React.FC = () => {
 return (
-    <section className="min-h-screen bg-black text-white px-4 sm:px-6 py-10 sm:py-12 flex items-center">
+    <section id="contact" className="min-h-screen bg-black text-white px-4 sm:px-6 py-10 sm:py-12 flex items-center">
     <div className="max-w-5xl mx-auto w-full">
         {/* Top Section */}
         <div className="flex flex-col sm:flex-row sm:items-center gap-6 mb-10">

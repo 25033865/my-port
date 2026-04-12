@@ -22,6 +22,11 @@ body {
   min-height: 100%;
 }
 
+.custom-cursor-scope,
+.custom-cursor-scope * {
+  cursor: none !important;
+}
+
 body {
   margin: 0;
   color: var(--foreground);

@@ -1,6 +1,19 @@
+"use client"
+
 import React from 'react'
 
 const Navbar = () => {
+  const handleLetsTalkClick = () => {
+    const contactSection = document.getElementById('contact')
+
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      return
+    }
+
+    window.location.hash = 'contact'
+  }
+
   return (
 <div className="navbar bg-inherit shadow-sm">
   <div className="navbar-start">
@@ -22,7 +35,7 @@ const Navbar = () => {
         <li><a className="rounded-xl hover:bg-indigo-900/10">Contact</a></li>
       </ul>
     </div>
-    <a className="btn btn-ghost text-xl rounded-xl bg-inherit">Mudau R.A</a>
+    <a className="btn btn-ghost text-lg rounded-xl bg-inherit">Mudau R.A</a>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
@@ -39,9 +52,11 @@ const Navbar = () => {
       <li><a className="rounded-xl hover:bg-indigo-900/10">Contact</a></li>
     </ul>
   </div>
-  <div className="navbar-end rounded-xl">
-    <a className="btn rounded-xl bg-indigo-900/10">Let&apos;s Talk</a>
-  </div>
+<div className="navbar-end">
+<button type="button" onClick={handleLetsTalkClick} className="px-3 py-1.5 text-sm font-bold rounded-xl border border-gray-500 text-gray-200 bg-black/20 backdrop-blur-sm hover:border-gray-300 hover:text-white transition cursor-pointer active:scale-95">
+  Let&apos;s Talk
+</button>
+</div>
 </div>
 
   )
