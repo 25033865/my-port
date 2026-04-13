@@ -1,24 +1,20 @@
-/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import Stats from "./Stats";
+import ProfileImage from "./image";
 
 const Profile: React.FC = () => {
 return (
     <section id="contact" className="min-h-screen bg-black text-white px-4 sm:px-6 py-10 sm:py-12 flex items-center">
-    <div className="max-w-5xl mx-auto w-full">
+    <div className="max-w-5xl mx-auto w-full mt-13 sm:mt-21">
         {/* Top Section */}
         <div className="flex flex-col sm:flex-row sm:items-center gap-6 mb-10">
           {/* Profile Image */}
         <div className="relative group flex justify-center sm:justify-start">
             <div
-                className="w-24 h-24 sm:w-28 sm:h-28 rounded-full p-0.75 bg-linear-to-r from-purple-500 to-blue-500
+                className="w-28 h-28 sm:w-32 sm:h-32 rounded-full p-0.75 bg-linear-to-r from-purple-500 to-blue-500
                     transition duration-300 group-hover:scale-105 group-hover:shadow-[0_0_25px_rgba(168,85,247,0.6)]"
             >
-            <img
-                src="/avatar.svg"
-                alt="profile"
-                className="w-full h-full rounded-full object-cover transition duration-300 group-hover:scale-105"
-            />
+            <ProfileImage />
             </div>
         </div>
 
@@ -26,7 +22,7 @@ return (
         <div className="text-center sm:text-left">
             <span
             className="inline-block px-4 py-1 rounded-full border border-purple-500 text-purple-400 text-sm
-            transition duration-300 hover:bg-purple-500 hover:text-black hover:shadow-md"
+            transition duration-300 hover:bg-purple-500 hover:text-black hover:shadow-md active:bg-purple-500 active:text-black active:shadow-md"
             >
         Available for work
             </span>
