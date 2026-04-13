@@ -15,6 +15,7 @@ const Navbar = () => {
   }
 
   return (
+    <div className="fixed top-0 left-0 w-full z-50 bg-black/50 backdrop-blur-md">
 <div className="navbar bg-inherit shadow-sm">
   <div className="navbar-start">
     <div className="dropdown">
@@ -56,6 +57,7 @@ const Navbar = () => {
 <button type="button" onClick={handleLetsTalkClick} className="px-3 py-1.5 text-sm font-bold rounded-xl border border-gray-500 text-gray-200 bg-black/20 backdrop-blur-sm hover:border-gray-300 hover:text-white transition cursor-pointer active:scale-95">
   Let&apos;s Talk
 </button>
+</div>
 </div>
 </div>
 
