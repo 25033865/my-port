@@ -37,6 +37,36 @@ body {
     var(--background);
 }
 
+#portfolio-root {
+  isolation: isolate;
+}
+
+#portfolio-root > :not([aria-hidden="true"]) {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: portfolioFadeSlideUp 1250ms cubic-bezier(0.2, 0.9, 0.2, 1) both;
+}
+
+#portfolio-root > :nth-child(2) {
+  animation-delay: 150ms;
+}
+
+#portfolio-root > :nth-child(3) {
+  animation-delay: 300ms;
+}
+
+#portfolio-root > :nth-child(4) {
+  animation-delay: 460ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #portfolio-root > :not([aria-hidden="true"]) {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
 a {
   color: inherit;
 }
@@ -627,6 +657,18 @@ a {
   padding-top: 0.8rem;
   color: rgba(181, 185, 199, 0.74);
   font-size: 0.85rem;
+}
+
+@keyframes portfolioFadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes pulseDot {
