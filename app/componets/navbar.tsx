@@ -15,7 +15,7 @@ const Navbar = () => {
   }
 
   return (
-    <div className="fixed top-0 left-0 w-full z-50 bg-black/50 backdrop-blur-md">
+    <div className="fixed top-0 left-0 w-full z-50 bg-inherit backdrop-blur-md">
 <div className="navbar bg-inherit shadow-sm">
   <div className="navbar-start">
     <div className="dropdown">
