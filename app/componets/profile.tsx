@@ -6,58 +6,59 @@ import GithubCard from "./githubcard";
 const Profile: React.FC = () => {
     return (
         <section id="contact" className="min-h-screen bg-inherit text-white px-4 sm:px-6 py-10 sm:py-12 flex items-center">
-            <div className="max-w-5xl mx-auto w-full mt-13 sm:mt-21">
-                {/* Top Section */}
-                <div className="flex flex-col sm:flex-row sm:items-center gap-6 mb-10">
-                    {/* Profile Image */}
-                    <div className="relative group flex justify-center sm:justify-start">
-                        <div
-                            className="w-28 h-28 sm:w-32 sm:h-32 rounded-full p-0.75 bg-linear-to-r from-purple-500 to-blue-500
+            <div className="mx-auto w-full max-w-7xl mt-13 sm:mt-21">
+                <div className="grid items-start gap-10 lg:grid-cols-[minmax(340px,0.72fr)_minmax(620px,1.28fr)] lg:gap-12">
+                    <div>
+                        {/* Top Section */}
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-6 mb-10">
+                            {/* Profile Image */}
+                            <div className="relative group flex justify-center sm:justify-start">
+                                <div
+                                    className="w-28 h-28 sm:w-32 sm:h-32 rounded-full p-0.75 bg-linear-to-r from-purple-500 to-blue-500
                     transition duration-300 group-hover:scale-105 group-hover:shadow-[0_0_25px_rgba(168,85,247,0.6)]"
-                        >
-                            <ProfileImage />
-                        </div>
-                    </div>
+                                >
+                                    <ProfileImage />
+                                </div>
+                            </div>
 
-                    {/* Status */}
-                    <div className="text-center sm:text-left">
-                        <span
-                            className="inline-block px-4 py-1 rounded-full border border-purple-500 text-purple-400 text-sm
+                            {/* Status */}
+                            <div className="text-center sm:text-left">
+                                <span
+                                    className="inline-block px-4 py-1 rounded-full border border-purple-500 text-purple-400 text-sm
             transition duration-300 hover:bg-purple-500 hover:text-black hover:shadow-md active:bg-purple-500 active:text-black active:shadow-md"
-                        >
-                            Available for work
-                        </span>
+                                >
+                                    Available for work
+                                </span>
 
-                        <p className="mt-2 text-gray-400 text-sm flex items-center justify-center sm:justify-start gap-2">
-                            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                            Based in South Africa
-                        </p>
-                    </div>
-                </div>
-
-                {/* Main Text */}
-                <div className="grid items-start gap-8 lg:grid-cols-2 lg:gap-10">
-                    <div className="text-center sm:text-left">
-                        <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold leading-tight mb-4">
-                            Hi, I&apos;m Mudau <br />
-
-                            Rotondwa <br />
-                            Agriment
-                        </h1>
-
-                        <h2 className="text-purple-500 text-lg sm:text-xl font-bold mb-6">
-                            Full Stack Developer
-                        </h2>
-                        <div className="mt-6 max-w-xl mx-auto md:mx-0 text-sm md:text-gray-400 text-gray-400 leading-relaxed font-medium">
-                            <Stats />
+                                <p className="mt-2 text-gray-400 text-sm flex items-center justify-center sm:justify-start gap-2">
+                                    <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                                    Based in South Africa
+                                </p>
+                            </div>
                         </div>
-                        {/* Tech Stack */}
-                        <div className="flex flex-wrap justify-center sm:justify-start gap-3">
-                            {["React.js", "Next.js", "Figma", "Java", "Firebase"].map(
-                                (tech) => (
-                                    <span
-                                        key={tech}
-                                        className="
+
+                        {/* Main Text */}
+                        <div className="text-center sm:text-left">
+                            <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold leading-tight mb-4">
+                                Hi, I&apos;m Mudau <br />
+
+                                Rotondwa <br />
+                                Agriment
+                            </h1>
+
+                            <h2 className="text-purple-500 text-lg sm:text-xl font-bold mb-6">
+                                Full Stack Developer
+                            </h2>
+                            <div className="mt-6 max-w-xl mx-auto md:mx-0 text-sm md:text-gray-400 text-gray-400 leading-relaxed font-medium">
+                                <Stats />
+                            </div>
+                            {/* Tech Stack */}
+                            <div className="flex flex-wrap justify-center sm:justify-start gap-3">
+                                {["React.js", "Next.js", "Figma", "Java", "Firebase"].map(
+                                    (tech) => (
+                                        <span
+                                            key={tech}
+                                            className="
                 px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm
                 bg-white/5 backdrop-blur-md
                 border border-white/10
@@ -70,15 +71,16 @@ const Profile: React.FC = () => {
 
             cursor-pointer
                     "
-                                    >
-                                        {tech}
-                                    </span>
-                                ),
-                            )}
+                                        >
+                                            {tech}
+                                        </span>
+                                    ),
+                                )}
+                            </div>
                         </div>
                     </div>
 
-                    <div className="mx-auto w-full max-w-xl lg:mx-0 lg:justify-self-end">
+                    <div className="mx-auto w-full lg:mx-0 lg:mt-2 lg:justify-self-end">
                         <GithubCard />
                     </div>
                 </div>

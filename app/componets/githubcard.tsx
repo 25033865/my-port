@@ -1,15 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 import { GitHubCalendar } from "react-github-calendar";
 
 const GITHUB_HANDLE = "25033865";
-const PROFILE_IMAGE_URL =
-    "https://firebasestorage.googleapis.com/v0/b/mudau-1d1cb.firebasestorage.app/o/musa.jpeg?alt=media&token=e25605e8-e9df-4990-836a-edd2f2f11ff8";
 
 const calendarTheme = {
-    dark: ["#161b22", "#3b2f61", "#5b3da4", "#7a54d9", "#a78bfa"],
+    dark: ["#f2f2f2", "#d8b4fe", "#c084fc", "#a855f7", "#6d28d9"],
+    light: ["#f2f2f2", "#d8b4fe", "#c084fc", "#a855f7", "#6d28d9"],
 };
 
 type CalendarSizing = {
@@ -20,66 +18,68 @@ type CalendarSizing = {
 
 function getCalendarSizing(width: number): CalendarSizing {
     if (width < 420) {
-        return { blockSize: 4, blockMargin: 1, fontSize: 9 };
+        return { blockSize: 4, blockMargin: 1, fontSize: 8 };
     }
 
-    if (width < 768) {
-        return { blockSize: 5, blockMargin: 1, fontSize: 10 };
+    if (width < 560) {
+        return { blockSize: 6, blockMargin: 1, fontSize: 8 };
     }
 
-    if (width < 1024) {
-        return { blockSize: 6, blockMargin: 1, fontSize: 10 };
+    if (width < 720) {
+        return { blockSize: 8, blockMargin: 1, fontSize: 9 };
     }
 
-    return { blockSize: 7, blockMargin: 2, fontSize: 11 };
+    return { blockSize: 9, blockMargin: 2, fontSize: 9 };
 }
 
 export default function GithubCard() {
+    const cardRef = useRef<HTMLElement>(null);
     const [sizing, setSizing] = useState<CalendarSizing>({
-        blockSize: 7,
-        blockMargin: 2,
-        fontSize: 11,
+        blockSize: 8,
+        blockMargin: 1,
+        fontSize: 9,
     });
 
     useEffect(() => {
+        const card = cardRef.current;
+
+        if (!card) {
+            return;
+        }
+
         const updateSizing = () => {
-            setSizing(getCalendarSizing(window.innerWidth));
+            setSizing(getCalendarSizing(card.clientWidth));
         };
 
+        const resizeObserver = new ResizeObserver(updateSizing);
+        resizeObserver.observe(card);
         updateSizing();
-        window.addEventListener("resize", updateSizing);
 
         return () => {
-            window.removeEventListener("resize", updateSizing);
+            resizeObserver.disconnect();
         };
     }, []);
 
     return (
-        <aside className="w-full rounded-2xl border border-white/10 bg-black/35 p-4 sm:p-5 backdrop-blur-xl shadow-[0_16px_36px_rgba(0,0,0,0.35)]">
-            <div className="rounded-xl border border-white/10 bg-white/5 p-4">
-                <div className="flex items-center gap-2 mb-3">
-                    <div className="relative h-5 w-5 overflow-hidden rounded-full ring-1 ring-white/20">
-                        <Image
-                            src={PROFILE_IMAGE_URL}
-                            alt="Mudau Rotondwa Agriment profile photo"
-                            fill
-                            sizes="20px"
-                            className="object-cover"
-                        />
-                    </div>
-                    <span className="text-sm font-medium text-white/90">@Mudau-RA</span>
-                    <span className="text-xs text-white/60">• GitHub</span>
-                </div>
+        <aside
+            ref={cardRef}
+            className="w-full max-w-4xl overflow-hidden rounded-2xl border border-white/85 bg-inherit px-5 py-5 shadow-[0_20px_50px_rgba(0,0,0,0.35)] backdrop-blur-sm sm:px-6"
+        >
+            <div className="mb-4 flex items-center gap-2">
+                <h2 className="text-lg font-bold leading-none text-white sm:text-lg">@Mudau-RA</h2>
+                <span className="text-gray-500">•</span>
+                <span className="text-sm text-gray-400 sm:text-base">GitHub</span>
+            </div>
+
+            <div className="github-calendar overflow-x-auto pb-1">
                 <GitHubCalendar
                     username={GITHUB_HANDLE}
                     colorScheme="dark"
-                    showColorLegend={false}
-                    showWeekdayLabels={["mon", "wed", "fri"]}
-                    showMonthLabels={true}
-                    showTotalCount={false}
                     blockSize={sizing.blockSize}
                     blockMargin={sizing.blockMargin}
                     fontSize={sizing.fontSize}
+                    showColorLegend={false}
+                    showTotalCount={false}
                     theme={calendarTheme}
                 />
             </div>
